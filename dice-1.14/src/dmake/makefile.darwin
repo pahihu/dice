@@ -1,0 +1,12 @@
+SRCS = main.c parse.c cmdlist.c convert.c depend.c var.c run.c buffer.c
+OBJS = $(SRCS:.c=.o)
+CFLAGS = -I../.. -g -DREGISTERED -DCOMMERCIAL -DNO_ASM -DINTERLBYTEORDER
+
+dmake: dmake-protos.h $(OBJS)
+	$(CC) -o $@ $(OBJS) ../../suplib/libamiga.a
+
+dmake-protos.h: $(SRCS)
+	cproto -v -e -o $@ $(SRCS)
+
+clean:
+	$(RM) dmake-protos.h $(OBJS) dmake

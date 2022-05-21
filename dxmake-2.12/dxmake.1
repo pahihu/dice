@@ -1,0 +1,70 @@
+.\" (c) Copyright 1985-2002 by Matthew Dillon.  Permission to
+.\"    use and distribute based on the FreeBSD copyright.
+.\"
+.\"
+.Dd December 2, 2002
+.Dt DXMAKE 1
+.Os BSD 4
+.Sh NAME
+.Nm dxmake
+.Nd simple but powerful wildcarding build system
+.Sh SYNOPSIS
+.Nm dxmake
+.Oo
+.Fl f
+.Ar file
+.Oc
+.Op Fl n
+.Oo
+.Fl D
+.Ar symbol[=data]
+.Oc
+.Op Fl d[N]
+.Op Fl a
+.Op Fl q
+.Op Fl h
+.Op Fl j[N]
+.Ar [targets...]
+.Sh DESCRIPTION
+The 
+.Nm
+utility manages project builds in a manner similar to the make utility.
+Unless otherwise specified, the build file is "DMakefile" (case sensitive!)
+and the target is "all".
+.Pp
+The following options are available:
+.Bl -tag -width flag
+.It Fl f
+Specifies an alternative to "DMakefile".
+.It Fl n
+Tell
+.Nm
+not to actually run any commands.
+.It Fl D
+Define a build symbol on the command line.
+.It Fl d[N]
+Set the debug level.  If no number is specified, a debug level of 1
+is used.
+.It Fl a
+Force all dependancies to be run as if they were out of date.
+.It Fl q
+Generate less verbose output.
+.It Fl j[N]
+(FUTURE, NOT YET IMPLEMENTED) - specify parallelism
+.It Fl h
+Summarize the version and available command line options.
+.Eel
+.Sh DIAGNOSTICS
+The
+.Nm
+utility exits 0 if the build succeeded.
+.Sh SEE ALSO
+(This section needs work)
+.Sh HISTORY
+The
+.Nm
+command was originally written by Matt Dillon in the mid 1980's as part
+of the DICE-Amiga shareware project.  DICE was a fully integrated C
+compiler, preprocessor, assembler, linker, and library set for the Amiga
+and is still used today for embedded work and other language development
+projects.

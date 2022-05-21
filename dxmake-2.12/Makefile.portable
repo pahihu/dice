@@ -1,0 +1,40 @@
+# Portable Makefile
+#
+# Note: this is not the one run by the bsd ports system
+#
+# (c)Copyright 1992-2000 Matthew Dillon, All Rights Reserved
+
+SRCS= buffer.c cmdlist.c convert.c depend.c main.c parse.c run.c subs.c var.c lists.c cond.c
+OBJS= buffer.o cmdlist.o convert.o depend.o main.o parse.o run.o subs.o var.o lists.o cond.o
+
+PREFIX = /usr/local
+
+EXED= $(PREFIX)/bin
+EXE= dxmake
+CC= gcc
+
+CFLAGS= -Wall -Wstrict-prototypes -O2 -g
+LFLAGS= -g
+
+PROTOS= dmake-protos.h
+
+all: $(PROTOS) $(EXE)
+
+$(EXE) : $(OBJS)
+	$(CC) $(OBJS) $(LFLAGS) -o $(EXE)
+#	strip $(EXE)
+
+$(PROTOS) : $(SRCS)
+	@rm -f $(PROTOS) $(PROTOS).new
+	cat $(SRCS) | egrep '^Prototype' > $(PROTOS).new
+	@mv -f $(PROTOS).new $(PROTOS)
+
+install:
+	rm -f $(EXED)/$(EXE).new
+	cp $(EXE) $(EXED)/$(EXE).new
+	chmod 755 $(EXED)/$(EXE).new
+	mv -f $(EXED)/$(EXE).new $(EXED)/$(EXE)
+
+clean:
+	rm -f $(PROTOS) $(PROTOS).new $(OBJS) $(EXE)
+

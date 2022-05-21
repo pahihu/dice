@@ -1,0 +1,29 @@
+SRCS = addhead.c \
+addtail.c \
+enqueue.c \
+findname.c \
+getcwd.c \
+gethead.c \
+getpred.c \
+getsucc.c \
+gettail.c \
+insert.c \
+locatepath.c \
+newlist.c \
+order.c \
+remhead.c \
+remove.c \
+strdup.c \
+stricmp.c \
+strins.c \
+strnicmp.c
+
+OBJS = $(SRCS:.c=.o)
+CFLAGS = -I.. -O2 -g -DREGISTERED -DCOMMERCIAL -DNO_ASM -DINTELBYTEORDER
+
+libamiga.a: $(OBJS)
+	ar cru $@ $(OBJS)
+	ranlib $@
+
+clean:
+	$(RM) libamiga.a $(OBJS)
