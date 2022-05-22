@@ -15,5 +15,7 @@ I have attached a compiled binary, with all the generated libs.
 The Amiga includes themselves are not included in the source and in the
 binary.
 
+The files amiga-includes.zip and dice114full-macos14-bin.zip  are password protected archives ;)
+
 
 **NOTE**: Good luck!
